@@ -6,7 +6,14 @@ import { data } from "../data/data";
 // Return example: ['name1', 'name2', ... , 'nameN']
 
 export function lowMoonsPlanets(data) {
-  // Your code goes here...
+  const planetNames = data.planets.reduce((acc, planet) => {
+      if (!planet.moons || planet.moons.length < 9) {
+        let planetName = planet.name;
+        return [...acc, planetName];
+      }
+    return acc;
+  }, []);
+  return planetNames;
 }
 
 // === TEST YOURSELF ===

@@ -5,7 +5,14 @@ import { data } from "../data/data";
 // Return example: ['name1', 'name2', ... , 'nameN']
 
 export function getPlanetsNamesWithMoons(data) {
-  // Your code goes here...
+  const planetNamesWithMoons = data.planets.reduce((acc, planet) => {
+    if (planet.moons) {
+      const planetName = planet.name;
+      return [...acc, planetName];
+    }
+    return acc;
+  }, []);
+  return planetNamesWithMoons;
 }
 
 

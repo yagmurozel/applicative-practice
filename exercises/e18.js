@@ -5,8 +5,17 @@ import { data } from "../data/data";
 // Return example: 1902
 
 export function getGreatestDiscoveryYear(data) {
-  // Your code goes here...
-  // feel free to import your `maxBy` or `minBy` methods from previous lessons
+  let maxYears = data.asteroids.reduce((acc, asteroid) => {
+    let key = asteroid.discoveryYear;
+    let value = acc[key] ?? 0;
+    return {
+      ...acc,
+      [key]: value + 1,
+    };
+  }, {});
+
+  let greatestYear = Object.keys(maxYears).reduce((a, b) => maxYears[a] > maxYears[b] ? a : b);
+  return Number(greatestYear);
 }
 
 // === TEST YOURSELF ===
